@@ -914,6 +914,13 @@ atob@^2.1.1:
   resolved "https://registry.yarnpkg.com/atob/-/atob-2.1.2.tgz#6d9517eb9e030d2436666651e86bd9f6f13533c9"
   integrity sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==
 
+autolinker@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/autolinker/-/autolinker-3.0.0.tgz#84ac72d25978baafce6a28d47159d7bdba15fffb"
+  integrity sha512-1j6NACOyBV2QBwEdm7YEcdaTZRziHUBDPWZ+5RRApy9OeVs9cTxmVATnDXwFDN84/Hdb5P8+aM9Mfci0c6yjqw==
+  dependencies:
+    tslib "^1.9.3"
+
 autoprefixer@9.4.6:
   version "9.4.6"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.4.6.tgz#0ace275e33b37de16b09a5547dbfe73a98c1d446"
@@ -4714,6 +4721,13 @@ neo-async@^2.5.0:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.0.tgz#b9d15e4d71c6762908654b5183ed38b753340835"
   integrity sha512-MFh0d/Wa7vkKO3Y3LlacqAEeHK0mckVqzDieUKTT+KGxi+zIpeVsFxymkIiRpbpDziHc290Xr9A1O4Om7otoRA==
 
+ngx-linky@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/ngx-linky/-/ngx-linky-2.1.0.tgz#3a52f7d6ff714cf02486ce40c48a5288bc35c95e"
+  integrity sha512-cCNHVIHa1se+EGS+kGwGNtTomKvYUouo2Zh6B5A1Kq3xkwEyBMJ6PeiV2ofV6AU0Tdwpdxy+m6K70HQ2UZVKbw==
+  dependencies:
+    tslib "^1.9.0"
+
 nice-try@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/nice-try/-/nice-try-1.0.5.tgz#a3378a7696ce7d223e88fc9b764bd7ef1089e366"
@@ -6993,7 +7007,7 @@ ts-node@~7.0.0:
     source-map-support "^0.5.6"
     yn "^2.0.0"
 
-tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
+tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.9.3.tgz#d7e4dd79245d85428c4d7e4822a79917954ca286"
   integrity sha512-4krF8scpejhaOgqzBEcGM7yDIEfi0/8+8zDRZhNZZ2kjmHJ4hv3zCbQWxoJGz1iw5U0Jl0nma13xzHXcncMavQ==

@@ -12,8 +12,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content class="post-card-content">
-    <p>
-      {{post.content}}
+    <p [innerHTML]="post.content | linky:{mention: 'twitter'}">
     </p>
   </mat-card-content>
   <mat-card-actions>

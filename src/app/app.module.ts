@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { PostComponent } from './post/post.component';
+import { LinkyModule } from 'ngx-linky';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { PostComponent } from './post/post.component';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    LayoutModule
+    LayoutModule,
+    LinkyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
