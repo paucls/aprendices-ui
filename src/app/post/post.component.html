@@ -1,0 +1,24 @@
+<mat-card class="post-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{post.title}}
+      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item disabled>Delete</button>
+        <button mat-menu-item disabled>Edit Post</button>
+      </mat-menu>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="post-card-content">
+    <p>
+      Is Layering Worth the Mapping?, Mark Seemann
+      http://blog.ploeh.dk/2012/02/09/IsLayeringWorththeMapping/
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button disabled>LIKE</button>
+    <button mat-button disabled>SHARE</button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,37 @@
+.post-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.post-card-content {
+  padding-left: 15px;
+  word-break: break-all;
+}
+
+// Fix actions not sticking to the bottom
+// https://github.com/angular/material2/issues/11094
+.mat-card {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.mat-card-header {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+
+.mat-card-content {
+  flex-grow: 1;
+  overflow: auto;
+}
