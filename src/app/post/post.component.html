@@ -1,7 +1,7 @@
 <mat-card class="post-card">
   <mat-card-header>
     <mat-card-title>
-      {{post.title}}
+      {{post.author}}
       <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -13,8 +13,7 @@
   </mat-card-header>
   <mat-card-content class="post-card-content">
     <p>
-      Is Layering Worth the Mapping?, Mark Seemann
-      http://blog.ploeh.dk/2012/02/09/IsLayeringWorththeMapping/
+      {{post.content}}
     </p>
   </mat-card-content>
   <mat-card-actions>
