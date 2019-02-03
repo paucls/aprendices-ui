@@ -4,10 +4,8 @@
     to grow as software developers.</h3>
 
   <mat-grid-list cols="3" rowHeight="300px">
-    <mat-grid-tile *ngFor="let post of cards | async">
-
+    <mat-grid-tile *ngFor="let post of posts">
       <app-post [post]="post"></app-post>
-
     </mat-grid-tile>
   </mat-grid-list>
 </div>
