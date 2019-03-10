@@ -1,16 +1,8 @@
 <mat-card class="post-card">
   <mat-card-header>
-    <img mat-card-avatar
-         src="https://material.angular.io/assets/img/examples/shiba1.jpg">
     <mat-card-title>
       {{post.author}}
-      <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu" xPosition="before">
-        <button mat-menu-item disabled>Delete</button>
-        <button mat-menu-item disabled>Edit Post</button>
-      </mat-menu>
+      <span class="category">{{post.category}}</span>
     </mat-card-title>
     <mat-card-subtitle>{{post.date | date}}</mat-card-subtitle>
   </mat-card-header>
@@ -18,8 +10,4 @@
     <p [innerHTML]="post.content | linky:{mention: 'twitter'}">
     </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions>
 </mat-card>

@@ -1,7 +1,6 @@
 interface Post {
-  title?: string;
   content: string;
-  author?: string;
-  category?: string;
-  date?: Date;
+  author: string;
+  category: string;
+  date: Date;
 }

@@ -6,35 +6,41 @@
   bottom: 15px;
 }
 
-.more-button {
-  position: absolute;
-  top: 5px;
-  right: 10px;
+.post-card-content {
+  padding: 15px 15px 0 15px;
+  word-break: break-all;
 }
 
-.post-card-content {
+.mat-card-header {
   padding-top: 15px;
-  padding-left: 5px;
-  word-break: break-all;
+}
+
+.mat-card-title {
+  font-size: 1rem;
+
+  .category {
+    margin-left: 0.5rem;
+    color: darkcyan;
+  }
 }
 
 // Fix actions not sticking to the bottom
 // https://github.com/angular/material2/issues/11094
-.mat-card {
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-
-  max-width: 400px;
-}
-
-.mat-card-header {
-  display: flex;
-  flex-direction: row;
-  flex-shrink: 0;
-}
-
-.mat-card-content {
-  flex-grow: 1;
-  overflow: auto;
-}
+//.mat-card {
+//  display: flex;
+//  flex-direction: column;
+//  flex-shrink: 0;
+//
+//  max-width: 400px;
+//}
+//
+//.mat-card-header {
+//  display: flex;
+//  flex-direction: row;
+//  flex-shrink: 0;
+//}
+//
+//.mat-card-content {
+//  flex-grow: 1;
+//  overflow: auto;
+//}
