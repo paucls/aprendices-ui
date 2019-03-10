@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PostComponent } from './post.component';
 import { MatCardModule } from '@angular/material';
 import { LinkyModule } from 'ngx-linky';
-import { Post } from './post.model';
+import { Post } from '../post.model';
 
 describe('PostComponent', () => {
   let component: PostComponent;

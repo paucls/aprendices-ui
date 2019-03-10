@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatGridListModule } from '@angular/material';
 
 import { DashboardComponent } from './dashboard.component';
-import { Post } from '../post/post.model';
+import { Post } from './post.model';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('DashboardComponent', () => {

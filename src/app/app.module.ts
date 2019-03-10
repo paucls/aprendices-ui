@@ -12,7 +12,7 @@ import { AppEffects } from './app.effects';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
-import { PostComponent } from './post/post.component';
+import { PostComponent } from './dashboard/post/post.component';
 import { LinkyModule } from 'ngx-linky';
 
 @NgModule({
