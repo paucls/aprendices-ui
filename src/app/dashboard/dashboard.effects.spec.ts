@@ -2,21 +2,26 @@ import { TestBed, inject } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
-import { AppEffects } from './app.effects';
+import { DashboardEffects } from './dashboard.effects';
+import { PostsService } from './posts.service';
 
-describe('AppEffects', () => {
+describe('DashboardEffects', () => {
   let actions$: Observable<any>;
-  let effects: AppEffects;
+  let effects: DashboardEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        AppEffects,
+        DashboardEffects,
+        {
+          provide: PostsService,
+          useValue: jasmine.createSpyObj('PostsService', ['getPosts'])
+        },
         provideMockActions(() => actions$)
       ]
     });
 
-    effects = TestBed.get(AppEffects);
+    effects = TestBed.get(DashboardEffects);
   });
 
   it('should be created', () => {

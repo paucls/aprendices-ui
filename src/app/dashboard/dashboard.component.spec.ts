@@ -4,10 +4,15 @@ import { MatGridListModule } from '@angular/material';
 import { DashboardComponent } from './dashboard.component';
 import { Post } from './post.model';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { combineReducers, Store, StoreModule } from '@ngrx/store';
+
+import * as fromRoot from '../reducers';
+import { reducer, State } from './dashboard.reducer';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
+  let store: Store<State>;
 
   const posts: Post[] = [{
     author: 'John Doe',
@@ -22,9 +27,15 @@ describe('DashboardComponent', () => {
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [DashboardComponent],
       imports: [
+        StoreModule.forRoot({
+          ...fromRoot.reducers,
+          feature: combineReducers(reducer),
+        }),
         MatGridListModule
       ]
     }).compileComponents();
+
+    store = TestBed.get(Store);
   }));
 
   beforeEach(() => {
@@ -37,4 +48,8 @@ describe('DashboardComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+
+  // it('should dispatch an action to load data when created', () => {
+  //   expect(store.dispatch).toHaveBeenCalledWith(action);
+  // });
 });
