@@ -8,6 +8,7 @@ import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
 import * as fromRoot from '../reducers';
 import { reducer, State } from './dashboard.reducer';
+import { LoadPosts } from './dashboard.actions';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -36,12 +37,12 @@ describe('DashboardComponent', () => {
     }).compileComponents();
 
     store = TestBed.get(Store);
+    spyOn(store, 'dispatch').and.callThrough();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
-    component.posts = posts;
     fixture.detectChanges();
   });
 
@@ -49,7 +50,7 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('should dispatch an action to load data when created', () => {
-  //   expect(store.dispatch).toHaveBeenCalledWith(action);
-  // });
+  it('should dispatch an action to load posts during initialization', () => {
+    expect(store.dispatch).toHaveBeenCalledWith(new LoadPosts());
+  });
 });
