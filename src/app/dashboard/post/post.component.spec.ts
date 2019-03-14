@@ -7,13 +7,13 @@ import { Post } from '../post.model';
 
 describe('PostComponent', () => {
   let component: PostComponent;
+  let element;
   let fixture: ComponentFixture<PostComponent>;
 
   const post: Post = {
     author: 'John Doe',
-    category: 'Katas',
-    content: 'Accelerate\'s definition of developer productivity, Will Larson (@Lethai) \n' +
-      'https://lethain.com/accelerate-developer-productivity/',
+    category: 'Architecture',
+    content: 'Accelerate developer productivity, Will Larson (@Lethai) \nhttps://lethain.com/accelerate-developer-productivity/',
     date: new Date('2018-09-10T00:00:00')
   };
 
@@ -30,11 +30,25 @@ describe('PostComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PostComponent);
     component = fixture.componentInstance;
+    element = fixture.debugElement.nativeElement;
+
     component.post = post;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  describe('title', () => {
+    it('should contain author and category of the post', () => {
+      const cardTitle = element.querySelector('mat-card-title');
+      expect(cardTitle.innerText).toContain(post.author);
+      expect(cardTitle.innerText).toContain(post.category);
+    });
+  });
+
+  describe('content', () => {
+    it('should contain post content', () => {
+      const cardContent = element.querySelector('mat-card-content');
+      expect(cardContent.innerText).toContain('Accelerate developer productivity, Will Larson (@Lethai) ' +
+        'lethain.com/accelerate-developer-productivity');
+    });
   });
 });
