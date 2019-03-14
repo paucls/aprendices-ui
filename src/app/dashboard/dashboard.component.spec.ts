@@ -8,10 +8,11 @@ import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
 import * as fromRoot from '../reducers';
 import { reducer, State } from './dashboard.reducer';
-import { LoadPosts } from './dashboard.actions';
+import { LoadPosts, ToggleCategory } from './dashboard.actions';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
+  let element;
   let fixture: ComponentFixture<DashboardComponent>;
   let store: Store<State>;
 
@@ -43,14 +44,17 @@ describe('DashboardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
+    element = fixture.debugElement.nativeElement;
     fixture.detectChanges();
-  });
-
-  it('should compile', () => {
-    expect(component).toBeTruthy();
   });
 
   it('should dispatch an action to load posts on initialization', () => {
     expect(store.dispatch).toHaveBeenCalledWith(new LoadPosts());
   });
+
+  // it('should dispatch toggle category on category chip click', () => {
+  //   element.querySelector('mat-chip').click();
+  //
+  //   expect(store.dispatch).toHaveBeenCalledWith(new ToggleCategory(category));
+  // });
 });

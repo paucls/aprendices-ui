@@ -1,6 +1,6 @@
 <div class="grid-container" *ngIf="(posts$ | async)">
   <mat-chip-list *ngIf="(category$ | async) as category">
-    <mat-chip>{{category}}</mat-chip>
+    <mat-chip (click)="unselectCategory(category)">{{category}}</mat-chip>
   </mat-chip-list>
 
   <mat-grid-list cols="3" rowHeight="250px">
