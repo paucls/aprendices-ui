@@ -6,6 +6,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatButtonModule,
   MatCardModule,
+  MatChipsModule,
   MatGridListModule,
   MatIconModule,
   MatMenuModule,
@@ -45,6 +46,7 @@ import { reducer } from './dashboard/dashboard.reducer';
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatGridListModule,
     MatIconModule,
     MatMenuModule,

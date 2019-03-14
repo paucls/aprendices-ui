@@ -12,9 +12,11 @@ import { LoadPosts } from './dashboard.actions';
 })
 export class DashboardComponent implements OnInit {
   posts$: Observable<Post[]>;
+  category$: Observable<string>;
 
   constructor(private store: Store<State>) {
     this.posts$ = this.store.select('dashboard', 'posts');
+    this.category$ = this.store.select('dashboard', 'category');
   }
 
   ngOnInit() {
