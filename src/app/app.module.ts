@@ -3,7 +3,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatButtonModule, MatCardModule, MatGridListModule, MatIconModule, MatMenuModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatGridListModule,
+  MatIconModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule
+} from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -14,7 +22,7 @@ import { AppComponent } from './app.component';
 import { metaReducers, reducers } from './reducers';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PostComponent } from './dashboard/post/post.component';
+import { PostComponent } from './dashboard/post-card/post.component';
 import { DashboardEffects } from './dashboard/dashboard.effects';
 import { reducer } from './dashboard/dashboard.reducer';
 
@@ -35,11 +43,12 @@ import { reducer } from './dashboard/dashboard.reducer';
       DashboardEffects
     ]),
     HttpClientModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
     MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatIconModule,
+    MatMenuModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
     LayoutModule,
     LinkyModule

@@ -6,7 +6,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  posts: []
+  posts: null
 };
 
 export function reducer(state = initialState, action: DashboardActions): State {
@@ -16,7 +16,10 @@ export function reducer(state = initialState, action: DashboardActions): State {
       return state;
 
     case DashboardActionTypes.LoadPostsSuccess:
-      return {...state, posts: action.posts};
+      return {
+        ...state,
+        posts: action.posts.slice(0, 299)
+      };
 
     default:
       return state;

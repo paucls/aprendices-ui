@@ -1,7 +1,9 @@
-<div class="grid-container">
+<div class="grid-container" *ngIf="(posts$ | async)">
   <mat-grid-list cols="3" rowHeight="250px">
     <mat-grid-tile *ngFor="let post of posts$ | async">
       <app-post [post]="post"></app-post>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+
+<mat-spinner [color]="'warn'" *ngIf="!(posts$ | async)"></mat-spinner>

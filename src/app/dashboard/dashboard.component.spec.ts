@@ -50,7 +50,7 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should dispatch an action to load posts during initialization', () => {
+  it('should dispatch an action to load posts on initialization', () => {
     expect(store.dispatch).toHaveBeenCalledWith(new LoadPosts());
   });
 });
