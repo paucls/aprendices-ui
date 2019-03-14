@@ -4,11 +4,16 @@ import { PostComponent } from './post.component';
 import { MatCardModule } from '@angular/material';
 import { LinkyModule } from 'ngx-linky';
 import { Post } from '../post.model';
+import { LoadPosts, ToggleCategory } from '../dashboard.actions';
+import { combineReducers, Store, StoreModule } from '@ngrx/store';
+import { reducer, State } from '../dashboard.reducer';
+import * as fromRoot from '../../reducers';
 
 describe('PostComponent', () => {
   let component: PostComponent;
   let element;
   let fixture: ComponentFixture<PostComponent>;
+  let store: Store<State>;
 
   const post: Post = {
     author: 'John Doe',
@@ -21,10 +26,17 @@ describe('PostComponent', () => {
     TestBed.configureTestingModule({
       declarations: [PostComponent],
       imports: [
+        StoreModule.forRoot({
+          ...fromRoot.reducers,
+          feature: combineReducers(reducer),
+        }),
         LinkyModule,
         MatCardModule
       ]
     }).compileComponents();
+
+    store = TestBed.get(Store);
+    spyOn(store, 'dispatch').and.callThrough();
   }));
 
   beforeEach(() => {
@@ -50,5 +62,11 @@ describe('PostComponent', () => {
       expect(cardContent.innerText).toContain('Accelerate developer productivity, Will Larson (@Lethai) ' +
         'lethain.com/accelerate-developer-productivity');
     });
+  });
+
+  it('should dispatch toggle category on category click', () => {
+    element.querySelector('.category').click();
+
+    expect(store.dispatch).toHaveBeenCalledWith(new ToggleCategory(post.category));
   });
 });

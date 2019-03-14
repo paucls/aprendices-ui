@@ -2,7 +2,8 @@
   <mat-card-header>
     <mat-card-title>
       {{post.author}}
-      <span class="category">{{post.category}}</span>
+      <span class="category"
+      (click)="toggleCategory()">{{post.category}}</span>
     </mat-card-title>
     <mat-card-subtitle>{{post.date | date}}</mat-card-subtitle>
   </mat-card-header>
