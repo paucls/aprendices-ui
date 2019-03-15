@@ -1,4 +1,5 @@
 # Aprendices UI
+[![Build Status](https://travis-ci.org/paucls/aprendices-ui.svg?branch=master)](https://travis-ci.org/paucls/aprendices-ui)
 
 A simple web app listing post of the Aprendices community.  
 
