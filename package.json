@@ -12,7 +12,7 @@
     "serve": "ng serve",
     "ng": "ng",
     "build": "ng build",
-    "test": "ng test --single-run --code-coverage",
+    "test": "ng test --watch=false --code-coverage",
     "test:watch": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
