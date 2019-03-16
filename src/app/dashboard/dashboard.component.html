@@ -1,4 +1,7 @@
-<div class="dashboard">
+<mat-spinner [color]="'warn'"
+             *ngIf="(isLoadingPosts$ | async)"></mat-spinner>
+
+<div class="dashboard" *ngIf="!(isLoadingPosts$ | async)">
   <div class="sidenav">
     <app-sidenav></app-sidenav>
   </div>
@@ -10,10 +13,7 @@
       </mat-chip-list>
     </div>
 
-    <mat-spinner [color]="'warn'"
-                 *ngIf="(isLoadingPosts$ | async)"></mat-spinner>
-
-    <div class="posts" *ngIf="!(isLoadingPosts$ | async)">
+    <div class="posts">
       <div class="post-card"
            *ngFor="let post of posts$ | async">
         <app-post [post]="post"></app-post>
