@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { State } from '../dashboard.reducer';
+import { ToggleCategory } from '../dashboard.actions';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,5 +12,9 @@ export class SidenavComponent {
 
   @Input() categories: string[];
 
-  constructor() { }
+  constructor(private store: Store<State>) {}
+
+  toggleCategory(category: string) {
+    this.store.dispatch(new ToggleCategory(category));
+  }
 }

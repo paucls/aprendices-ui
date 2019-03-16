@@ -3,7 +3,9 @@
 
   <ul>
     <li *ngFor="let category of categories">
-      <mat-checkbox>{{category}}</mat-checkbox>
+      <mat-checkbox (click)="toggleCategory(category)">
+        {{category}}
+      </mat-checkbox>
     </li>
   </ul>
 </div>
