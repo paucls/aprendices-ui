@@ -38,11 +38,26 @@ describe('Dashboard Reducer', () => {
 
       const result = reducer(state, action);
 
-      expect(result).toEqual({
+      expect(result.posts).toEqual(posts);
+      expect(result.isLoadingPosts).toBe(false);
+    });
+
+    it('should return a new state including all existing categories sorted by name', () => {
+      const posts: Post[] = [
+        {category: 'category2', author: 'author', content: 'content', date: new Date()},
+        {category: 'category1', author: 'author', content: 'content', date: new Date()},
+        {category: 'category1', author: 'author', content: 'content', date: new Date()},
+        {category: '', author: 'author', content: 'content', date: new Date()}
+      ];
+      const state = {
         ...initialState,
-        posts,
-        isLoadingPosts: false
-      });
+        isLoadingPosts: true
+      };
+      const action = new LoadPostsSuccess(posts);
+
+      const result = reducer(state, action);
+
+      expect(result.categories).toEqual(['category1', 'category2']);
     });
   });
 
