@@ -6,13 +6,15 @@ export interface State {
   isLoadingPosts: boolean;
   categories: string[];
   selectedCategories: string[];
+  searchTerm: string;
 }
 
 export const initialState: State = {
   posts: null,
   isLoadingPosts: false,
   categories: [],
-  selectedCategories: []
+  selectedCategories: [],
+  searchTerm: ''
 };
 
 export function reducer(state = initialState, action: DashboardActions): State {
@@ -36,6 +38,12 @@ export function reducer(state = initialState, action: DashboardActions): State {
       return {
         ...state,
         selectedCategories: toggleCategory(state, action.category)
+      };
+
+    case DashboardActionTypes.SearchPosts:
+      return {
+        ...state,
+        searchTerm: action.searchTerm
       };
 
     default:

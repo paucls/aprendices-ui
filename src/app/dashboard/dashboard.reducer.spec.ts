@@ -1,5 +1,5 @@
 import { initialState, reducer } from './dashboard.reducer';
-import { LoadPosts, LoadPostsSuccess, ToggleCategory } from './dashboard.actions';
+import { LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
 import { Post } from './post.model';
 
 describe('Dashboard Reducer', () => {
@@ -62,7 +62,6 @@ describe('Dashboard Reducer', () => {
   });
 
   describe('toggle category action', () => {
-
     it('should add the category to the list of selected categories', () => {
       const state = {...initialState};
       const action = new ToggleCategory('category1');
@@ -86,6 +85,20 @@ describe('Dashboard Reducer', () => {
         selectedCategories: ['category2']
       });
     });
+  });
 
+  describe('search posts action', () => {
+    it('should add the search term to the new state', () => {
+      const state = {...initialState};
+      const searchTerm = 'Pair';
+      const action = new SearchPosts(searchTerm);
+
+      const result = reducer(state, action);
+
+      expect(result).toEqual({
+        ...initialState,
+        searchTerm
+      });
+    });
   });
 });
