@@ -7,8 +7,10 @@ import {
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
+  MatFormFieldModule,
   MatGridListModule,
   MatIconModule,
+  MatInputModule,
   MatMenuModule,
   MatProgressSpinnerModule,
   MatToolbarModule
@@ -27,6 +29,7 @@ import { PostComponent } from './dashboard/post-card/post.component';
 import { DashboardEffects } from './dashboard/dashboard.effects';
 import { reducer } from './dashboard/dashboard.reducer';
 import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -49,11 +52,14 @@ import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatFormFieldModule,
     MatGridListModule,
     MatIconModule,
+    MatInputModule,
     MatMenuModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
+    ReactiveFormsModule,
     LayoutModule,
     LinkyModule
   ],

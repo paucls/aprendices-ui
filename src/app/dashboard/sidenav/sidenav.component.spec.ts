@@ -1,11 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidenavComponent } from './sidenav.component';
-import { MatCheckboxModule } from '@angular/material';
-import { ToggleCategory } from '../dashboard.actions';
+import { MatCheckboxModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { SearchPosts, ToggleCategory } from '../dashboard.actions';
 import { combineReducers, Store, StoreModule } from '@ngrx/store';
 import { reducer, State } from '../dashboard.reducer';
 import * as fromRoot from '../../reducers';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('SidenavComponent', () => {
   let component: SidenavComponent;
@@ -17,6 +19,10 @@ describe('SidenavComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         MatCheckboxModule,
+        MatFormFieldModule,
+        MatInputModule,
+        NoopAnimationsModule,
+        ReactiveFormsModule,
         StoreModule.forRoot({
           ...fromRoot.reducers,
           feature: combineReducers(reducer)
@@ -44,6 +50,16 @@ describe('SidenavComponent', () => {
     expect(listItems.length).toBe(2);
     expect(listItems[0].innerText).toContain('Category A');
     expect(listItems[1].innerText).toContain('Category B');
+  });
+
+  it('should dispatch search posts on input value changes', () => {
+    const searchTerm = 'Abc';
+    const inputField = element.querySelector('input');
+
+    inputField.value = searchTerm;
+    inputField.dispatchEvent(new Event('input'));
+
+    expect(store.dispatch).toHaveBeenCalledWith(new SearchPosts(searchTerm));
   });
 
   it('should dispatch toggle category on category click', () => {
