@@ -1,47 +1,20 @@
-.post-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
-}
-
-.post-card-content {
-  padding: 15px 15px 0 15px;
-  word-break: break-all;
-}
-
 .mat-card-header {
-  padding-top: 15px;
-}
+  ::ng-deep .mat-card-header-text {
+    margin: 0.5em;
+  }
 
-.mat-card-title {
-  font-size: 1rem;
+  .mat-card-title {
+    font-size: 1rem;
 
-  .category {
-    margin-left: 0.5rem;
-    color: darkcyan;
-    cursor: pointer;
+    .category {
+      margin-left: 0.5rem;
+      color: darkcyan;
+      cursor: pointer;
+    }
   }
 }
 
-// Fix actions not sticking to the bottom
-// https://github.com/angular/material2/issues/11094
-//.mat-card {
-//  display: flex;
-//  flex-direction: column;
-//  flex-shrink: 0;
-//
-//  max-width: 400px;
-//}
-//
-//.mat-card-header {
-//  display: flex;
-//  flex-direction: row;
-//  flex-shrink: 0;
-//}
-//
-//.mat-card-content {
-//  flex-grow: 1;
-//  overflow: auto;
-//}
+.post-card-content {
+  padding: 0 0.5em 0.5em 0.5em;
+  word-break: break-all;
+}

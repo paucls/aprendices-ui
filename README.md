@@ -18,3 +18,9 @@ Run `yarn build` to build the project. The build artifacts will be stored in the
 Run `yarn test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 Run `yarn e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Documentation
+Links to some of the articles and documentation used to implement this project:
+
+- How to use Flexbox to create a modern CSS card design layout, Abbey Fitzgerald
+https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
