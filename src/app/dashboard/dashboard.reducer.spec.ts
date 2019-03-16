@@ -62,15 +62,30 @@ describe('Dashboard Reducer', () => {
   });
 
   describe('toggle category action', () => {
-    it('should return a new state with selected category', () => {
+
+    it('should add the category to the list of selected categories', () => {
       const state = {...initialState};
       const action = new ToggleCategory('category1');
 
       const result = reducer(state, action);
 
       expect(result).toEqual({
-        ...initialState, category: 'category1'
+        ...initialState,
+        selectedCategories: ['category1']
       });
     });
+
+    it('should remove the category from the list of selected categories', () => {
+      const state = {...initialState, selectedCategories: ['category1', 'category2']};
+      const action = new ToggleCategory('category1');
+
+      const result = reducer(state, action);
+
+      expect(result).toEqual({
+        ...initialState,
+        selectedCategories: ['category2']
+      });
+    });
+
   });
 });

@@ -8,7 +8,7 @@ import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
 import * as fromRoot from '../reducers';
 import { reducer, State } from './dashboard.reducer';
-import { LoadPosts, ToggleCategory } from './dashboard.actions';
+import { LoadPosts } from './dashboard.actions';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -31,7 +31,7 @@ describe('DashboardComponent', () => {
       imports: [
         StoreModule.forRoot({
           ...fromRoot.reducers,
-          feature: combineReducers(reducer),
+          feature: combineReducers(reducer)
         }),
         MatGridListModule
       ]
@@ -51,10 +51,4 @@ describe('DashboardComponent', () => {
   it('should dispatch an action to load posts on initialization', () => {
     expect(store.dispatch).toHaveBeenCalledWith(new LoadPosts());
   });
-
-  // it('should dispatch toggle category on category chip click', () => {
-  //   element.querySelector('mat-chip').click();
-  //
-  //   expect(store.dispatch).toHaveBeenCalledWith(new ToggleCategory(category));
-  // });
 });

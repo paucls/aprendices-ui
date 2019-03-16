@@ -5,14 +5,14 @@ export interface State {
   posts: Post[];
   isLoadingPosts: boolean;
   categories: string[];
-  category: string;
+  selectedCategories: string[];
 }
 
 export const initialState: State = {
   posts: null,
   isLoadingPosts: false,
   categories: [],
-  category: null
+  selectedCategories: []
 };
 
 export function reducer(state = initialState, action: DashboardActions): State {
@@ -35,7 +35,7 @@ export function reducer(state = initialState, action: DashboardActions): State {
     case DashboardActionTypes.ToggleCategory:
       return {
         ...state,
-        category: action.category
+        selectedCategories: toggleCategory(state, action.category)
       };
 
     default:
@@ -48,4 +48,12 @@ function extractCategories(posts: Post[]) {
   const uniqCategories = new Set<string>(categories);
   uniqCategories.delete('');
   return [...Array.from(uniqCategories)].sort();
+}
+
+function toggleCategory(state, category: string) {
+  if (state.selectedCategories.includes(category)) {
+    return state.selectedCategories.filter(c => c !== category);
+  } else {
+    return [...state.selectedCategories, category];
+  }
 }

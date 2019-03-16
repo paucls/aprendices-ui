@@ -16,5 +16,10 @@ export class SidenavComponent {
 
   toggleCategory(category: string) {
     this.store.dispatch(new ToggleCategory(category));
+    this.scrollToTop();
+  }
+
+  private scrollToTop() {
+    window.scrollTo(0, 0);
   }
 }
