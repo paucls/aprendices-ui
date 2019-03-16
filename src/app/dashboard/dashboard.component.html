@@ -1,14 +1,16 @@
 <mat-spinner [color]="'warn'"
              *ngIf="(isLoadingPosts$ | async)"></mat-spinner>
 
-<div class="dashboard" *ngIf="!(isLoadingPosts$ | async)">
+<div class="dashboard"
+     *ngIf="!(isLoadingPosts$ | async)">
   <div class="sidenav">
-    <app-sidenav></app-sidenav>
+    <app-sidenav [categories]="categories$ | async"></app-sidenav>
   </div>
 
   <div class="content">
     <div class="selected-categories">
-      <mat-chip-list *ngIf="(category$ | async) as category">
+      <mat-chip-list
+        *ngIf="(category$ | async) as category">
         <mat-chip (click)="unselectCategory(category)">{{category}}</mat-chip>
       </mat-chip-list>
     </div>

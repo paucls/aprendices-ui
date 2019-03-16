@@ -2,35 +2,8 @@
   <span class="sidenav-section-title">Categories</span>
 
   <ul>
-    <li>
-      <mat-checkbox>Architecture/Design</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Clean Code</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Community</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Courses, events, conferences,...</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Domain Driven Design</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Functional Programming</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Humour</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Interesting Posts and Papers</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>Readers Club</mat-checkbox>
-    </li>
-    <li>
-      <mat-checkbox>TDD - BDD - Testing - Monitoring</mat-checkbox>
+    <li *ngFor="let category of categories">
+      <mat-checkbox>{{category}}</mat-checkbox>
     </li>
   </ul>
 </div>

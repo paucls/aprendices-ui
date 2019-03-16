@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Post } from './post.model';
 import { State } from './dashboard.reducer';
 import { LoadPosts, ToggleCategory } from './dashboard.actions';
-import { selectCategory, selectFilteredPosts, selectIsLoadingPosts } from './dashboard.selectors';
+import { selectCategories, selectCategory, selectFilteredPosts, selectIsLoadingPosts } from './dashboard.selectors';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +12,13 @@ import { selectCategory, selectFilteredPosts, selectIsLoadingPosts } from './das
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  posts$: Observable<Post[]>;
+  categories$: Observable<string[]>;
   category$: Observable<string>;
+  posts$: Observable<Post[]>;
   isLoadingPosts$: Observable<boolean>;
 
   constructor(private store: Store<State>) {
+    this.categories$ = this.store.select(selectCategories);
     this.category$ = this.store.select(selectCategory);
     this.posts$ = this.store.select(selectFilteredPosts);
     this.isLoadingPosts$ = this.store.select(selectIsLoadingPosts);

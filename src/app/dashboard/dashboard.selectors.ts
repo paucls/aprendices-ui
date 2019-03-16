@@ -4,6 +4,7 @@ import { State } from './dashboard.reducer';
 const maxNumberPostsToDisplay = 150;
 const selectFeature = createFeatureSelector<State>('dashboard');
 
+export const selectCategories = createSelector(selectFeature, state => state.categories);
 export const selectCategory = createSelector(selectFeature, state => state.category);
 export const selectPosts = createSelector(selectFeature, state => state.posts || []);
 export const selectIsLoadingPosts = createSelector(selectFeature, state => state.isLoadingPosts);
