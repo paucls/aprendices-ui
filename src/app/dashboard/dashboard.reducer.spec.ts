@@ -1,5 +1,5 @@
 import { initialState, reducer } from './dashboard.reducer';
-import { LoadPostsSuccess, ToggleCategory } from './dashboard.actions';
+import { LoadPosts, LoadPostsSuccess, ToggleCategory } from './dashboard.actions';
 import { Post } from './post.model';
 
 describe('Dashboard Reducer', () => {
@@ -14,41 +14,47 @@ describe('Dashboard Reducer', () => {
     });
   });
 
-  describe('load posts success action', () => {
-    it('should return a new state including loaded posts', () => {
-      const posts: Post[] = [{category: 'category', author: 'author', content: 'content', date: new Date()}];
-      const action = new LoadPostsSuccess(posts);
+  describe('load posts action', () => {
+    it('should return a new state indicating posts are loading', () => {
+      const action = new LoadPosts();
 
       const result = reducer(initialState, action);
 
       expect(result).toEqual({
         ...initialState,
-        posts,
-        filteredPosts: posts
+        isLoadingPosts: true
       });
     });
   });
 
-  xdescribe('toggle category action', () => {
-    it('should return a new state with posts filtered by category', () => {
-      const posts: Post[] = [
-        {category: 'category1', author: 'author', content: 'content', date: new Date()},
-        {category: 'category2', author: 'author', content: 'content', date: new Date()},
-        {category: 'category1', author: 'author', content: 'content', date: new Date()}
-      ];
+  describe('load posts success action', () => {
+    it('should return a new state including loaded posts', () => {
+      const posts: Post[] = [{category: 'category', author: 'author', content: 'content', date: new Date()}];
       const state = {
         ...initialState,
-        posts,
-        filteredPosts: posts
+        isLoadingPosts: true
       };
-      const action = new ToggleCategory('category1');
+      const action = new LoadPostsSuccess(posts);
 
       const result = reducer(state, action);
 
       expect(result).toEqual({
         ...initialState,
-        category: 'category1',
-        filteredPosts: [posts[0], posts[2]]
+        posts,
+        isLoadingPosts: false
+      });
+    });
+  });
+
+  describe('toggle category action', () => {
+    it('should return a new state with selected category', () => {
+      const state = {...initialState};
+      const action = new ToggleCategory('category1');
+
+      const result = reducer(state, action);
+
+      expect(result).toEqual({
+        ...initialState, category: 'category1'
       });
     });
   });

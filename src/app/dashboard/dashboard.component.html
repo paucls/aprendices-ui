@@ -1,4 +1,8 @@
-<div class="grid-container" *ngIf="(posts$ | async)">
+<mat-spinner [color]="'warn'"
+             *ngIf="(isLoadingPosts$ | async)"></mat-spinner>
+
+<div class="grid-container"
+     *ngIf="!(isLoadingPosts$ | async)">
   <mat-chip-list *ngIf="(category$ | async) as category">
     <mat-chip (click)="unselectCategory(category)">{{category}}</mat-chip>
   </mat-chip-list>
@@ -10,4 +14,3 @@
   </mat-grid-list>
 </div>
 
-<mat-spinner [color]="'warn'" *ngIf="!(posts$ | async)"></mat-spinner>
