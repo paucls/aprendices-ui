@@ -1,15 +1,23 @@
-<div class="selected-categories">
-  <mat-chip-list *ngIf="(category$ | async) as category">
-    <mat-chip (click)="unselectCategory(category)">{{category}}</mat-chip>
-  </mat-chip-list>
-</div>
+<div class="dashboard">
+  <div class="sidenav">
+    <app-sidenav></app-sidenav>
+  </div>
 
-<mat-spinner [color]="'warn'"
-             *ngIf="(isLoadingPosts$ | async)"></mat-spinner>
+  <div class="content">
+    <div class="selected-categories">
+      <mat-chip-list *ngIf="(category$ | async) as category">
+        <mat-chip (click)="unselectCategory(category)">{{category}}</mat-chip>
+      </mat-chip-list>
+    </div>
 
-<div class="posts" *ngIf="!(isLoadingPosts$ | async)">
-  <div class="post-card"
-       *ngFor="let post of posts$ | async">
-    <app-post [post]="post"></app-post>
+    <mat-spinner [color]="'warn'"
+                 *ngIf="(isLoadingPosts$ | async)"></mat-spinner>
+
+    <div class="posts" *ngIf="!(isLoadingPosts$ | async)">
+      <div class="post-card"
+           *ngFor="let post of posts$ | async">
+        <app-post [post]="post"></app-post>
+      </div>
+    </div>
   </div>
 </div>

@@ -6,6 +6,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatButtonModule,
   MatCardModule,
+  MatCheckboxModule,
   MatChipsModule,
   MatGridListModule,
   MatIconModule,
@@ -26,12 +27,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostComponent } from './dashboard/post-card/post.component';
 import { DashboardEffects } from './dashboard/dashboard.effects';
 import { reducer } from './dashboard/dashboard.reducer';
+import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    PostComponent
+    PostComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +49,7 @@ import { reducer } from './dashboard/dashboard.reducer';
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatChipsModule,
     MatGridListModule,
     MatIconModule,

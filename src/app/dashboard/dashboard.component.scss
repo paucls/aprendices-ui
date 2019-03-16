@@ -1,5 +1,19 @@
+.dashboard {
+  padding-top: 64px;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.sidenav {
+  display: none;
+  background-color: white;
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12);
+  padding: 2.5em 1em;
+}
+
 .selected-categories {
-  padding-top: 80px;
+  //padding-top: 1em;
   padding-left: 1.5em;
 
   .mat-chip {
@@ -32,12 +46,23 @@
 }
 
 @media screen and (min-width: 60em) {
+  .sidenav {
+    display: block;
+    width: 30%;
+  }
+
+  .post-card {
+    flex: 0 1 calc(50% - 1em);
+  }
+}
+
+@media screen and (min-width: 80em) {
   .post-card {
     flex: 0 1 calc(33% - 1em);
   }
 }
 
-@media screen and (min-width: 90em) {
+@media screen and (min-width: 110em) {
   .post-card {
     flex: 0 1 calc(25% - 1em);
   }
