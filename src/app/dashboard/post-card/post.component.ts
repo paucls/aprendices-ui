@@ -17,5 +17,10 @@ export class PostComponent {
 
   toggleCategory() {
     this.store.dispatch(new ToggleCategory(this.post.category));
+    this.scrollToTop();
+  }
+
+  private scrollToTop() {
+    window.scrollTo(0, 0);
   }
 }
