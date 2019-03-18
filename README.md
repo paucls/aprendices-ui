@@ -24,3 +24,5 @@ Links to some of the articles and documentation used to implement this project:
 
 - How to use Flexbox to create a modern CSS card design layout, Abbey Fitzgerald
 https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
+- Favicon generator
+https://favicon.io/favicon-generator

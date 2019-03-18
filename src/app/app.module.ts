@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { LayoutModule } from '@angular/cdk/layout';
 import {
   MatButtonModule,
@@ -28,13 +29,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PostComponent } from './dashboard/post-card/post.component';
 import { DashboardEffects } from './dashboard/dashboard.effects';
 import { reducer } from './dashboard/dashboard.reducer';
+import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    HeaderComponent,
     PostComponent,
     SidenavComponent
   ],
