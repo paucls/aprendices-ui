@@ -25,9 +25,4 @@ describe('AppComponent', () => {
     const header = element.querySelector('app-header');
     expect(header).not.toBeNull();
   });
-
-  it('should have a dashboard', () => {
-    const dashboard = element.querySelector('app-dashboard');
-    expect(dashboard).not.toBeNull();
-  });
 });
