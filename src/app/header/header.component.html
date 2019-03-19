@@ -1,3 +1,9 @@
 <mat-toolbar color="warn">
-  <span>Aprendices</span>
+  <mat-toolbar-row>
+    <span>Aprendices</span>
+    <span class="menu-spacer"></span>
+    <div>
+      <a [routerLink]="['/about']" mat-button>About</a>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
