@@ -23,6 +23,7 @@ import { LinkyModule } from 'ngx-linky';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AboutComponent } from './about/about.component';
 import { metaReducers, reducers } from './reducers';
 import { environment } from '../environments/environment';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -35,6 +36,7 @@ import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
 @NgModule({
   declarations: [
     AppComponent,
+    AboutComponent,
     DashboardComponent,
     HeaderComponent,
     PostComponent,
