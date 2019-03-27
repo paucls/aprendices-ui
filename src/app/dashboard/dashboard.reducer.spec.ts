@@ -1,5 +1,5 @@
 import { initialState, reducer } from './dashboard.reducer';
-import { LoadOldPostsSuccess, LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
+import { LoadOldPosts, LoadOldPostsSuccess, LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
 import { Post } from './post.model';
 
 describe('Dashboard Reducer', () => {
@@ -17,6 +17,19 @@ describe('Dashboard Reducer', () => {
   describe('load posts action', () => {
     it('should return a new state indicating posts are loading', () => {
       const action = new LoadPosts();
+
+      const result = reducer(initialState, action);
+
+      expect(result).toEqual({
+        ...initialState,
+        isLoadingPosts: true
+      });
+    });
+  });
+
+  describe('load old posts action', () => {
+    it('should return a new state indicating posts are loading', () => {
+      const action = new LoadOldPosts();
 
       const result = reducer(initialState, action);
 

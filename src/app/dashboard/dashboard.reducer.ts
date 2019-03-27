@@ -21,6 +21,7 @@ export function reducer(state = initialState, action: DashboardActions): State {
   switch (action.type) {
 
     case DashboardActionTypes.LoadPosts:
+    case DashboardActionTypes.LoadOldPosts:
       return {
         ...state,
         isLoadingPosts: true

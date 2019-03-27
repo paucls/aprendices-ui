@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import { DashboardActionTypes, LoadOldPostsSuccess, LoadPostsSuccess } from './dashboard.actions';
+import { DashboardActionTypes, LoadOldPosts, LoadOldPostsSuccess, LoadPostsSuccess } from './dashboard.actions';
 import { map, mergeMap, take } from 'rxjs/operators';
 import { PostsService } from './posts.service';
 
@@ -17,12 +17,19 @@ export class DashboardEffects {
     ));
 
   @Effect()
-  loadOldPosts$ = this.actions$.pipe(
+  triggerLoadOldPosts$ = this.actions$.pipe(
     ofType(
       DashboardActionTypes.SearchPosts,
       DashboardActionTypes.ToggleCategory
     ),
-    take(1),
+    take(1), // Trigger the load of old posts only one time
+    map(() => new LoadOldPosts()));
+
+  @Effect()
+  loadOldPosts$ = this.actions$.pipe(
+    ofType(
+      DashboardActionTypes.LoadOldPosts
+    ),
     mergeMap(() => this.postsService.getOldPosts()
       .pipe(
         map(posts => new LoadOldPostsSuccess(posts))
