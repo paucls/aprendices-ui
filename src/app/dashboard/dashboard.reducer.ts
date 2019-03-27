@@ -34,6 +34,15 @@ export function reducer(state = initialState, action: DashboardActions): State {
         isLoadingPosts: false
       };
 
+    case DashboardActionTypes.LoadOldPostsSuccess:
+      const allPosts = [...state.posts, ...action.oldPosts];
+      return {
+        ...state,
+        posts: allPosts,
+        categories: extractCategories(allPosts),
+        isLoadingPosts: false
+      };
+
     case DashboardActionTypes.ToggleCategory:
       return {
         ...state,

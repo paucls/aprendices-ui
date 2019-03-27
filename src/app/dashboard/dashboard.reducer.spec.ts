@@ -1,5 +1,5 @@
 import { initialState, reducer } from './dashboard.reducer';
-import { LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
+import { LoadOldPostsSuccess, LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
 import { Post } from './post.model';
 
 describe('Dashboard Reducer', () => {
@@ -58,6 +58,25 @@ describe('Dashboard Reducer', () => {
       const result = reducer(state, action);
 
       expect(result.categories).toEqual(['category1', 'category2']);
+    });
+  });
+
+  describe('load posts success action', () => {
+    it('should return a new state including loaded posts', () => {
+      const posts: Post[] = [{category: 'category1', author: 'author', content: 'content2', date: new Date()}];
+      const oldPosts: Post[] = [{category: 'category2', author: 'author', content: 'content1', date: new Date()}];
+      const state = {
+        ...initialState,
+        posts,
+        isLoadingPosts: true
+      };
+      const action = new LoadOldPostsSuccess(oldPosts);
+
+      const result = reducer(state, action);
+
+      expect(result.posts).toEqual([...posts, ...oldPosts]);
+      expect(result.categories).toEqual(['category1', 'category2']);
+      expect(result.isLoadingPosts).toBe(false);
     });
   });
 

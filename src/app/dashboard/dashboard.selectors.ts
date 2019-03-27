@@ -22,6 +22,12 @@ export const selectFilteredPosts = createSelector(
   });
 
 function bySearchTermAndCategory(post: Post, searchTerm, selectedCategories) {
-  return (post.content.includes(searchTerm) || post.author.includes(searchTerm)) &&
+  const postContent = toUpperCase(post.content);
+  const postAuthor = toUpperCase(post.author);
+  return (postContent.includes(toUpperCase(searchTerm)) || postAuthor.includes(toUpperCase(searchTerm))) &&
     (selectedCategories.length === 0 || selectedCategories.includes(post.category));
+}
+
+function toUpperCase(text: string): string {
+  return (text || '').toUpperCase();
 }

@@ -4,6 +4,7 @@ import { Post } from './post.model';
 export enum DashboardActionTypes {
   LoadPosts = '[Dashboard] Load Posts',
   LoadPostsSuccess = '[Dashboard] Load Posts Success',
+  LoadOldPostsSuccess = '[Dashboard] Load Old Posts Success',
   ToggleCategory = '[Dashboard] Toggle Category',
   SearchPosts = '[Dashboard] Search Posts'
 }
@@ -16,6 +17,12 @@ export class LoadPostsSuccess implements Action {
   readonly type = DashboardActionTypes.LoadPostsSuccess;
 
   constructor(public posts: Post[]) {}
+}
+
+export class LoadOldPostsSuccess implements Action {
+  readonly type = DashboardActionTypes.LoadOldPostsSuccess;
+
+  constructor(public oldPosts: Post[]) {}
 }
 
 export class ToggleCategory implements Action {
@@ -33,5 +40,6 @@ export class SearchPosts implements Action {
 export type DashboardActions =
   |LoadPosts
   |LoadPostsSuccess
+  |LoadOldPostsSuccess
   |ToggleCategory
   |SearchPosts;
