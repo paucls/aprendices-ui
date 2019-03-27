@@ -9,7 +9,6 @@
     "heroku-postbuild": "ng build --prod --output-path dist",
     "start": "http-server dist/ -P $API_BASE_URL",
     "start:dev": "ng serve --proxy-config proxy.conf.json",
-    "serve": "ng serve",
     "ng": "ng",
     "build": "ng build",
     "test": "ng test --watch=false --code-coverage",

@@ -29,7 +29,19 @@ describe('PostsService', () => {
     });
 
     httpMock
-      .expectOne({ method: 'GET', url: 'assets/posts/posts.json' })
+      .expectOne({ method: 'GET', url: '/api/posts.json' })
+      .flush(posts);
+  });
+
+  it('should get old posts from API', () => {
+    const posts = [];
+
+    postsService.getOldPosts().subscribe(response => {
+      expect(response).toEqual(posts);
+    });
+
+    httpMock
+      .expectOne({ method: 'GET', url: '/api/posts_old.json' })
       .flush(posts);
   });
 });
