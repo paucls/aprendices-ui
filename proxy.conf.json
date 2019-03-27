@@ -1,9 +1,11 @@
 {
-  "/api/*": {
-    "target": "http://localhost:8080",
+  "/api": {
+    "target": "https://raw.githubusercontent.com/new-aprendices/new-aprendices.github.io/master",
     "secure": false,
     "pathRewrite": {
       "^/api": ""
-    }
+    },
+    "logLevel": "debug",
+    "changeOrigin": true
   }
 }
