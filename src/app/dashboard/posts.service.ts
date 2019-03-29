@@ -20,6 +20,6 @@ export class PostsService {
   }
 
   getCategories() {
-    return this.http.get<string[]>(`assets/posts/categories.json`);
+    return this.http.get<string[]>(`${environment.baseUrl}/categories.json`);
   }
 }

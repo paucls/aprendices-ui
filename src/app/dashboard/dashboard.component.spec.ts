@@ -8,7 +8,7 @@ import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
 import * as fromRoot from '../reducers';
 import { reducer, State } from './dashboard.reducer';
-import { LoadPosts } from './dashboard.actions';
+import { LoadCategories, LoadPosts } from './dashboard.actions';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -46,6 +46,10 @@ describe('DashboardComponent', () => {
     component = fixture.componentInstance;
     element = fixture.debugElement.nativeElement;
     fixture.detectChanges();
+  });
+
+  it('should dispatch an action to load categories on initialization', () => {
+    expect(store.dispatch).toHaveBeenCalledWith(new LoadCategories());
   });
 
   it('should dispatch an action to load posts on initialization', () => {

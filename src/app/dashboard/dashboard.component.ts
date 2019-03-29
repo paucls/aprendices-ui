@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Post } from './post.model';
 import { State } from './dashboard.reducer';
-import { LoadPosts, ToggleCategory } from './dashboard.actions';
+import { LoadCategories, LoadPosts, ToggleCategory } from './dashboard.actions';
 import { selectCategories, selectFilteredPosts, selectIsLoadingPosts } from './dashboard.selectors';
 
 @Component({
@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch(new LoadPosts());
+    this.store.dispatch(new LoadCategories());
   }
 
   unselectCategory(category: string) {

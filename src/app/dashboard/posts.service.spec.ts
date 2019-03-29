@@ -53,7 +53,7 @@ describe('PostsService', () => {
     });
 
     httpMock
-      .expectOne({ method: 'GET', url: 'assets/posts/categories.json' })
+      .expectOne({ method: 'GET', url: '/api/categories.json' })
       .flush(categories);
   });
 });
