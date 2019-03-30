@@ -28,7 +28,6 @@ https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 https://favicon.io/favicon-generator
 
 ## TODO
-- Categories are loaded from the back-end.
 - Categories for the view should also have a "selected" flag
 to avoid problems when reloading. Now the component is keeping
 the selected state itself.
