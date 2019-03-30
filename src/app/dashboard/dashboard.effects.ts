@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import { DashboardActionTypes, LoadOldPosts, LoadOldPostsSuccess, LoadPostsSuccess } from './dashboard.actions';
+import { DashboardActionTypes, LoadCategoriesSuccess, LoadOldPosts, LoadOldPostsSuccess, LoadPostsSuccess } from './dashboard.actions';
 import { map, mergeMap, take } from 'rxjs/operators';
 import { PostsService } from './posts.service';
 
 @Injectable()
 export class DashboardEffects {
+
+  @Effect()
+  loadCategories$ = this.actions$.pipe(ofType(DashboardActionTypes.LoadCategories),
+    mergeMap(() => this.postsService.getCategories()
+      .pipe(
+        map(categories => new LoadCategoriesSuccess(categories))
+      )
+    ));
 
   @Effect()
   loadPosts$ = this.actions$.pipe(ofType(DashboardActionTypes.LoadPosts),

@@ -1,5 +1,13 @@
 import { initialState, reducer } from './dashboard.reducer';
-import { LoadOldPosts, LoadOldPostsSuccess, LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
+import {
+  LoadCategories, LoadCategoriesSuccess,
+  LoadOldPosts,
+  LoadOldPostsSuccess,
+  LoadPosts,
+  LoadPostsSuccess,
+  SearchPosts,
+  ToggleCategory
+} from './dashboard.actions';
 import { Post } from './post.model';
 
 describe('Dashboard Reducer', () => {
@@ -51,26 +59,11 @@ describe('Dashboard Reducer', () => {
 
       const result = reducer(state, action);
 
-      expect(result.posts).toEqual(posts);
-      expect(result.isLoadingPosts).toBe(false);
-    });
-
-    it('should return a new state including all existing categories sorted by name', () => {
-      const posts: Post[] = [
-        {category: 'category2', author: 'author', content: 'content', date: new Date()},
-        {category: 'category1', author: 'author', content: 'content', date: new Date()},
-        {category: 'category1', author: 'author', content: 'content', date: new Date()},
-        {category: '', author: 'author', content: 'content', date: new Date()}
-      ];
-      const state = {
-        ...initialState,
-        isLoadingPosts: true
-      };
-      const action = new LoadPostsSuccess(posts);
-
-      const result = reducer(state, action);
-
-      expect(result.categories).toEqual(['category1', 'category2']);
+      expect(result).toEqual({
+        ...state,
+        posts,
+        isLoadingPosts: false
+      });
     });
   });
 
@@ -87,9 +80,22 @@ describe('Dashboard Reducer', () => {
 
       const result = reducer(state, action);
 
-      expect(result.posts).toEqual([...posts, ...oldPosts]);
-      expect(result.categories).toEqual(['category1', 'category2']);
-      expect(result.isLoadingPosts).toBe(false);
+      expect(result).toEqual({
+        ...state,
+        posts: [...posts, ...oldPosts],
+        isLoadingPosts: false
+      });
+    });
+  });
+
+  describe('load categories success action', () => {
+    it('should return a new state including loaded categories sorted by name', () => {
+      const categories: string[] = ['Learning', 'XP', 'Languages'];
+      const action = new LoadCategoriesSuccess(categories);
+
+      const result = reducer(initialState, action);
+
+      expect(result.categories).toEqual(['Languages', 'Learning', 'XP']);
     });
   });
 
