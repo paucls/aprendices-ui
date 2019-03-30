@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatGridListModule } from '@angular/material';
 
 import { DashboardComponent } from './dashboard.component';
-import { Post } from './post.model';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { combineReducers, Store, StoreModule } from '@ngrx/store';
 
@@ -15,14 +14,6 @@ describe('DashboardComponent', () => {
   let element;
   let fixture: ComponentFixture<DashboardComponent>;
   let store: Store<State>;
-
-  const posts: Post[] = [{
-    author: 'John Doe',
-    category: 'Katas',
-    content: 'Accelerate\'s definition of developer productivity, Will Larson (@Lethai) \n' +
-      'https://lethain.com/accelerate-developer-productivity/',
-    date: new Date('2018-09-10T00:00:00')
-  }];
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -48,11 +39,13 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should dispatch an action to load categories on initialization', () => {
-    expect(store.dispatch).toHaveBeenCalledWith(new LoadCategories());
-  });
+  describe('on initialization', () => {
+    it('should dispatch an action to load categories', () => {
+      expect(store.dispatch).toHaveBeenCalledWith(new LoadCategories());
+    });
 
-  it('should dispatch an action to load posts on initialization', () => {
-    expect(store.dispatch).toHaveBeenCalledWith(new LoadPosts());
+    it('should dispatch an action to load posts', () => {
+      expect(store.dispatch).toHaveBeenCalledWith(new LoadPosts());
+    });
   });
 });

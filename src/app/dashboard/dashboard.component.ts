@@ -23,8 +23,8 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new LoadPosts());
     this.store.dispatch(new LoadCategories());
+    this.store.dispatch(new LoadPosts());
   }
 
   unselectCategory(category: string) {

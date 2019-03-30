@@ -74,8 +74,8 @@ describe('Dashboard Reducer', () => {
     });
   });
 
-  describe('load posts success action', () => {
-    it('should return a new state including loaded posts', () => {
+  describe('load old posts success action', () => {
+    it('should return a new state including all posts', () => {
       const posts: Post[] = [{category: 'category1', author: 'author', content: 'content2', date: new Date()}];
       const oldPosts: Post[] = [{category: 'category2', author: 'author', content: 'content1', date: new Date()}];
       const state = {
