@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `yarn serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `yarn start:dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
@@ -26,3 +26,10 @@ Links to some of the articles and documentation used to implement this project:
 https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 - Favicon generator
 https://favicon.io/favicon-generator
+
+## TODO
+- Categories for the view should also have a "selected" flag
+to avoid problems when reloading. Now the component is keeping
+the selected state itself.
+- Selecting a category form the card should select the category
+on the sidenav.

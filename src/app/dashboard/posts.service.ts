@@ -18,4 +18,8 @@ export class PostsService {
   getOldPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.baseUrl}/posts_old.json`);
   }
+
+  getCategories() {
+    return this.http.get<string[]>(`${environment.baseUrl}/categories.json`);
+  }
 }

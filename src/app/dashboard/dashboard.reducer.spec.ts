@@ -1,5 +1,13 @@
 import { initialState, reducer } from './dashboard.reducer';
-import { LoadPosts, LoadPostsSuccess, SearchPosts, ToggleCategory } from './dashboard.actions';
+import {
+  LoadCategories, LoadCategoriesSuccess,
+  LoadOldPosts,
+  LoadOldPostsSuccess,
+  LoadPosts,
+  LoadPostsSuccess,
+  SearchPosts,
+  ToggleCategory
+} from './dashboard.actions';
 import { Post } from './post.model';
 
 describe('Dashboard Reducer', () => {
@@ -27,6 +35,19 @@ describe('Dashboard Reducer', () => {
     });
   });
 
+  describe('load old posts action', () => {
+    it('should return a new state indicating posts are loading', () => {
+      const action = new LoadOldPosts();
+
+      const result = reducer(initialState, action);
+
+      expect(result).toEqual({
+        ...initialState,
+        isLoadingPosts: true
+      });
+    });
+  });
+
   describe('load posts success action', () => {
     it('should return a new state including loaded posts', () => {
       const posts: Post[] = [{category: 'category', author: 'author', content: 'content', date: new Date()}];
@@ -38,26 +59,43 @@ describe('Dashboard Reducer', () => {
 
       const result = reducer(state, action);
 
-      expect(result.posts).toEqual(posts);
-      expect(result.isLoadingPosts).toBe(false);
+      expect(result).toEqual({
+        ...state,
+        posts,
+        isLoadingPosts: false
+      });
     });
+  });
 
-    it('should return a new state including all existing categories sorted by name', () => {
-      const posts: Post[] = [
-        {category: 'category2', author: 'author', content: 'content', date: new Date()},
-        {category: 'category1', author: 'author', content: 'content', date: new Date()},
-        {category: 'category1', author: 'author', content: 'content', date: new Date()},
-        {category: '', author: 'author', content: 'content', date: new Date()}
-      ];
+  describe('load old posts success action', () => {
+    it('should return a new state including all posts', () => {
+      const posts: Post[] = [{category: 'category1', author: 'author', content: 'content2', date: new Date()}];
+      const oldPosts: Post[] = [{category: 'category2', author: 'author', content: 'content1', date: new Date()}];
       const state = {
         ...initialState,
+        posts,
         isLoadingPosts: true
       };
-      const action = new LoadPostsSuccess(posts);
+      const action = new LoadOldPostsSuccess(oldPosts);
 
       const result = reducer(state, action);
 
-      expect(result.categories).toEqual(['category1', 'category2']);
+      expect(result).toEqual({
+        ...state,
+        posts: [...posts, ...oldPosts],
+        isLoadingPosts: false
+      });
+    });
+  });
+
+  describe('load categories success action', () => {
+    it('should return a new state including loaded categories sorted by name', () => {
+      const categories: string[] = ['Learning', 'XP', 'Languages'];
+      const action = new LoadCategoriesSuccess(categories);
+
+      const result = reducer(initialState, action);
+
+      expect(result.categories).toEqual(['Languages', 'Learning', 'XP']);
     });
   });
 

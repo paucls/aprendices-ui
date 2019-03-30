@@ -44,4 +44,16 @@ describe('PostsService', () => {
       .expectOne({ method: 'GET', url: '/api/posts_old.json' })
       .flush(posts);
   });
+
+  it('should get post categories from API', () => {
+    const categories = [];
+
+    postsService.getCategories().subscribe(response => {
+      expect(response).toEqual(categories);
+    });
+
+    httpMock
+      .expectOne({ method: 'GET', url: '/api/categories.json' })
+      .flush(categories);
+  });
 });

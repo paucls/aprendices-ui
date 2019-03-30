@@ -21,6 +21,7 @@ export function reducer(state = initialState, action: DashboardActions): State {
   switch (action.type) {
 
     case DashboardActionTypes.LoadPosts:
+    case DashboardActionTypes.LoadOldPosts:
       return {
         ...state,
         isLoadingPosts: true
@@ -30,8 +31,21 @@ export function reducer(state = initialState, action: DashboardActions): State {
       return {
         ...state,
         posts: action.posts,
-        categories: extractCategories(action.posts),
         isLoadingPosts: false
+      };
+
+    case DashboardActionTypes.LoadOldPostsSuccess:
+      const allPosts = [...state.posts, ...action.oldPosts];
+      return {
+        ...state,
+        posts: allPosts,
+        isLoadingPosts: false
+      };
+
+    case DashboardActionTypes.LoadCategoriesSuccess:
+      return {
+        ...state,
+        categories: action.categories.sort()
       };
 
     case DashboardActionTypes.ToggleCategory:
@@ -49,13 +63,6 @@ export function reducer(state = initialState, action: DashboardActions): State {
     default:
       return state;
   }
-}
-
-function extractCategories(posts: Post[]) {
-  const categories = posts.map(post => post.category);
-  const uniqCategories = new Set<string>(categories);
-  uniqCategories.delete('');
-  return [...Array.from(uniqCategories)].sort();
 }
 
 function toggleCategory(state, category: string) {
