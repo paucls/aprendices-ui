@@ -1,10 +1,16 @@
 import { DashboardActions, DashboardActionTypes } from './dashboard.actions';
 import { Post } from './post.model';
 
+interface FilterCategory {
+  name: string;
+  selected: boolean;
+}
+
 export interface State {
   posts: Post[];
   isLoadingPosts: boolean;
   categories: string[];
+  filterCategories: FilterCategory[];
   selectedCategories: string[];
   searchTerm: string;
 }
@@ -14,6 +20,7 @@ export const initialState: State = {
   isLoadingPosts: false,
   categories: [],
   selectedCategories: [],
+  filterCategories: [],
   searchTerm: ''
 };
 
@@ -45,7 +52,14 @@ export function reducer(state = initialState, action: DashboardActions): State {
     case DashboardActionTypes.LoadCategoriesSuccess:
       return {
         ...state,
-        categories: action.categories.sort()
+        categories: action.categories.sort(),
+        filterCategories: action.categories.sort()
+          .map(category => {
+            return {
+              name: category,
+              selected: false
+            };
+          })
       };
 
     case DashboardActionTypes.ToggleCategory:

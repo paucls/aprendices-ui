@@ -99,6 +99,20 @@ describe('Dashboard Reducer', () => {
     });
   });
 
+  describe('load categories success action', () => {
+    it('should return a new state including loaded categories sorted by name', () => {
+      const categories: string[] = ['Learning', 'XP', 'Languages'];
+      const action = new LoadCategoriesSuccess(categories);
+
+      const result = reducer(initialState, action);
+
+      expect(result.filterCategories).toEqual([
+        {name: 'Languages', selected: false},
+        {name: 'Learning', selected: false},
+        {name: 'XP', selected: false}]);
+    });
+  });
+
   describe('toggle category action', () => {
     it('should add the category to the list of selected categories', () => {
       const state = {...initialState};
