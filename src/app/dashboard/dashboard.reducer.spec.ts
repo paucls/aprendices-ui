@@ -95,18 +95,7 @@ describe('Dashboard Reducer', () => {
 
       const result = reducer(initialState, action);
 
-      expect(result.categories).toEqual(['Languages', 'Learning', 'XP']);
-    });
-  });
-
-  describe('load categories success action', () => {
-    it('should return a new state including loaded categories sorted by name', () => {
-      const categories: string[] = ['Learning', 'XP', 'Languages'];
-      const action = new LoadCategoriesSuccess(categories);
-
-      const result = reducer(initialState, action);
-
-      expect(result.filterCategories).toEqual([
+      expect(result.categories).toEqual([
         {name: 'Languages', selected: false},
         {name: 'Learning', selected: false},
         {name: 'XP', selected: false}]);
@@ -114,27 +103,41 @@ describe('Dashboard Reducer', () => {
   });
 
   describe('toggle category action', () => {
-    it('should add the category to the list of selected categories', () => {
-      const state = {...initialState};
-      const action = new ToggleCategory('category1');
+    it('should select the category when it is unselected', () => {
+      const state = {
+        ...initialState,
+        categories: [
+          {name: 'Learning', selected: false},
+          {name: 'XP', selected: false}]
+      };
+      const action = new ToggleCategory('XP');
 
       const result = reducer(state, action);
 
       expect(result).toEqual({
-        ...initialState,
-        selectedCategories: ['category1']
+        ...state,
+        categories: [
+          {name: 'Learning', selected: false},
+          {name: 'XP', selected: true}]
       });
     });
 
-    it('should remove the category from the list of selected categories', () => {
-      const state = {...initialState, selectedCategories: ['category1', 'category2']};
-      const action = new ToggleCategory('category1');
+    it('should unselect the category when it is selected', () => {
+      const state = {
+        ...initialState,
+        categories: [
+          {name: 'Learning', selected: true},
+          {name: 'XP', selected: true}]
+      };
+      const action = new ToggleCategory('XP');
 
       const result = reducer(state, action);
 
       expect(result).toEqual({
-        ...initialState,
-        selectedCategories: ['category2']
+        ...state,
+        categories: [
+          {name: 'Learning', selected: true},
+          {name: 'XP', selected: false}]
       });
     });
   });

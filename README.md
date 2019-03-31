@@ -28,8 +28,4 @@ https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 https://favicon.io/favicon-generator
 
 ## TODO
-- Categories for the view should also have a "selected" flag
-to avoid problems when reloading. Now the component is keeping
-the selected state itself.
-- Selecting a category form the card should select the category
-on the sidenav.
+- Search bar functionality should be available in small screens.

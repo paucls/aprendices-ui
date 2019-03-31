@@ -40,7 +40,9 @@ describe('SidenavComponent', () => {
     component = fixture.componentInstance;
     element = fixture.debugElement.nativeElement;
 
-    component.categories = ['Category A', 'Category B'];
+    component.categories = [
+      {name: 'Category A', selected: false},
+      {name: 'Category B', selected: false}];
     fixture.detectChanges();
   });
 
