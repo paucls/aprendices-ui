@@ -8,8 +8,10 @@
 
   <ul>
     <li *ngFor="let category of categories">
-      <mat-checkbox (click)="toggleCategory(category)">
-        {{category}}
+      <mat-checkbox
+        (click)="toggleCategory(category)"
+        [checked]="category.selected">
+        {{category.name}}
       </mat-checkbox>
     </li>
   </ul>

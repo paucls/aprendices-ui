@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from '../dashboard.reducer';
+import { FilterCategory, State } from '../dashboard.reducer';
 import { SearchPosts, ToggleCategory } from '../dashboard.actions';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class SidenavComponent implements OnInit, OnDestroy {
 
-  @Input() categories: string[];
+  @Input() categories: FilterCategory[];
 
   searchField = new FormControl('');
 
@@ -30,8 +30,8 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.subs.unsubscribe();
   }
 
-  toggleCategory(category: string) {
-    this.store.dispatch(new ToggleCategory(category));
+  toggleCategory(category: FilterCategory) {
+    this.store.dispatch(new ToggleCategory(category.name));
     this.scrollToTop();
   }
 

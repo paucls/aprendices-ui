@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Post } from './post.model';
-import { State } from './dashboard.reducer';
+import { FilterCategory, State } from './dashboard.reducer';
 import { LoadCategories, LoadPosts, ToggleCategory } from './dashboard.actions';
 import { selectCategories, selectFilteredPosts, selectIsLoadingPosts } from './dashboard.selectors';
 
@@ -12,7 +12,7 @@ import { selectCategories, selectFilteredPosts, selectIsLoadingPosts } from './d
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  categories$: Observable<string[]>;
+  categories$: Observable<FilterCategory[]>;
   posts$: Observable<Post[]>;
   isLoadingPosts$: Observable<boolean>;
 
@@ -28,6 +28,6 @@ export class DashboardComponent implements OnInit {
   }
 
   unselectCategory(category: string) {
-    this.store.dispatch(new ToggleCategory(null));
+    this.store.dispatch(new ToggleCategory(category));
   }
 }

@@ -1,7 +1,7 @@
 # Aprendices UI
 [![Build Status](https://travis-ci.org/paucls/aprendices-ui.svg?branch=master)](https://travis-ci.org/paucls/aprendices-ui)
 
-A simple web app listing post of the Aprendices community.  
+The [Aprendices community](https://aprendices.herokuapp.com) web app.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
 
@@ -28,8 +28,4 @@ https://getflywheel.com/layout/flexbox-create-modern-card-design-layout/
 https://favicon.io/favicon-generator
 
 ## TODO
-- Categories for the view should also have a "selected" flag
-to avoid problems when reloading. Now the component is keeping
-the selected state itself.
-- Selecting a category form the card should select the category
-on the sidenav.
+- Search bar functionality should be available in small screens.
