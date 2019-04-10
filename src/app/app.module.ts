@@ -32,6 +32,7 @@ import { DashboardEffects } from './dashboard/dashboard.effects';
 import { reducer } from './dashboard/dashboard.reducer';
 import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
+import { AddButtonComponent } from './dashboard/add-button/add-button.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { SidenavComponent } from './dashboard/sidenav/sidenav.component';
     DashboardComponent,
     HeaderComponent,
     PostComponent,
-    SidenavComponent
+    SidenavComponent,
+    AddButtonComponent
   ],
   imports: [
     BrowserModule,
