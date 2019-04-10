@@ -1,6 +1,6 @@
 import { initialState, reducer } from './dashboard.reducer';
 import {
-  LoadCategories, LoadCategoriesSuccess,
+  LoadCategoriesSuccess,
   LoadOldPosts,
   LoadOldPostsSuccess,
   LoadPosts,

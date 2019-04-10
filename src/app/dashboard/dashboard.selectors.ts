@@ -1,9 +1,9 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FilterCategory, State } from './dashboard.reducer';
+import { FilterCategory, initialState, State } from './dashboard.reducer';
 import { Post } from './post.model';
 
 const maxNumberPostsToDisplay = 150;
-const selectFeature = createFeatureSelector<State>('dashboard');
+const selectFeature = createSelector(createFeatureSelector<State>('dashboard'), state => state || initialState);
 
 export const selectCategories = createSelector(selectFeature, state => state.categories);
 export const selectSearchTerm = createSelector(selectFeature, state => state.searchTerm);
